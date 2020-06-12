@@ -1,7 +1,7 @@
 locals {
   google_project_name = "lego-${var.environment}"
-  image_name        = "nginx"
-  image_tag         = "1.1.19"
+  image_name          = "nginx"
+  image_tag           = "1.1.19"
 }
 
 provider "google" {
@@ -18,7 +18,7 @@ resource "google_project_service" "service" {
     "container.googleapis.com"
   ])
   disable_on_destroy = false
-  service = each.key
+  service            = each.key
 }
 
 module "kubernetes-cluster" {

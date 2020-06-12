@@ -13,8 +13,7 @@ This repository contains code to deploy nginx web application onto a kubernetes 
 
 ## Assumptions
 - Have a connection to the internet
-- That the site doesn’t have to be externally accessible
-- That the url could have a more meaningful name of nasa instead of SP-4206
+
 
 ## Running the code
 
