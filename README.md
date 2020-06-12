@@ -2,18 +2,18 @@
 
 ## Introduction
 
-This repository contains code to deploy nginx web application onto a kubernetes cluster running behind an (External HTTP(S) Load Balancer)(https://cloud.google.com/load-balancing/docs/https).
+This repository contains code to deploy nginx web application onto a kubernetes cluster running behind an [External HTTP(S) Load Balancer](https://cloud.google.com/load-balancing/docs/https).
 3 replicas containers are serving the traffic as part of a Kubernetes deployment. 
 
 ## Prerequisites
 
-* provider.google: version = "~> 3.25"
-* provider.kubernetes: version = "~> 1.11"
-
+Terraform v0.12.26
++ provider.google v3.25.0
++ provider.kubernetes v1.11.3
+Access to the json key to authenticate to the google cloud lego-npd project (stored locally in /tmp dir)
 
 ## Assumptions
 - Have a connection to the internet
-
 
 ## Running the code
 

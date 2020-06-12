@@ -4,7 +4,7 @@ action="$1"
 
 if [[ "$action" == 'init' ]]; then
 
-  export GOOGLE_APPLICATION_CREDENTIALS=/Users/isobeljones/keys/lego-npd.json
+  export GOOGLE_APPLICATION_CREDENTIALS=/tmp/lego-npd.json
   export GOOGLE_PROJECT="lego-npd"
 
   gcloud container clusters get-credentials lego-kubernetes-cluster --project lego-280115 --zone europe-west1
