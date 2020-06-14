@@ -1,7 +1,7 @@
 locals {
   google_project_name = "lego-${var.environment}"
   image_name          = "nginx"
-  image_tag           = "1.1.19"
+  image_tag           = "1.19"
 }
 
 provider "google" {
@@ -10,6 +10,12 @@ provider "google" {
   zone    = var.google_zone
 }
 
+provider "kubernetes" {
+  host                   = module.kubernetes-cluster.endpoint
+  client_certificate     = base64decode(module.kubernetes-cluster.client_certificate)
+  client_key             = base64decode(module.kubernetes-cluster.client_key)
+  cluster_ca_certificate = base64decode(module.kubernetes-cluster.cluster_ca_certificate)
+}
 
 resource "google_project_service" "service" {
   for_each = toset([
@@ -45,12 +51,12 @@ module "subnetwork-1" {
   source          = "../../modules/VPC/subnet"
   subnetwork_name = "subnetwork-1"
   network         = module.network.self_link
-  ip_cidr_range   = "10.101.161.80/28"
+  ip_cidr_range   = "10.101.161.80/28" # 16 ip addresses
 }
 
 module "subnetwork-2" {
   source          = "../../modules/VPC/subnet"
   subnetwork_name = "subnetwork-2"
   network         = module.network.self_link
-  ip_cidr_range   = "10.101.195.48/28"
+  ip_cidr_range   = "10.101.195.48/28" # 16 ip addresses
 }

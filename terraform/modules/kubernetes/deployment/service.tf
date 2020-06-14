@@ -17,7 +17,7 @@ resource "kubernetes_service" "nodeport" {
 
 resource "kubernetes_ingress" "example_ingress" {
   metadata {
-    name = var.app_name
+    name = "${var.app_name}-ingress"
   }
 
   spec {
@@ -25,6 +25,8 @@ resource "kubernetes_ingress" "example_ingress" {
       service_name = "${var.app_name}-nodeport"
       service_port = 80
     }
-
   }
+
+  depends_on = [kubernetes_service.nodeport]
+
 }
